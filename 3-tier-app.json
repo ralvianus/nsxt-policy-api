@@ -12,14 +12,15 @@
         "failover_mode": "{{Tier1-failover_mode}}",
         "tier0_path":"/infra/tier-0s/Tier-0-GW",
         "route_advertisement_types": [
-          "TIER1_CONNECTED"
+          "TIER1_LB_SNAT",
+          "TIER1_NAT",
+          "TIER1_CONNECTED",
+          "TIER1_LB_VIP"
         ],
         "children": [
           {
            "resource_type":"ChildLocaleServices",
-
            "LocaleServices":{
-
                "resource_type":"LocaleServices",
                "id":  "default",
                 "edge_cluster_path": "/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}"
@@ -398,6 +399,7 @@
       "LBService": {
         "resource_type": "LBService",
         "id": "{{lb-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
         "connectivity_path": "/infra/tier-1s/{{Tier1-name}}",
         "error_log_level": "DEBUG",
         "access_log_enabled": true
@@ -408,6 +410,7 @@
       "LBVirtualServer": {
         "resource_type": "LBVirtualServer",
         "id": "{{vs-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
         "lb_service_path": "/infra/lb-services/{{lb-id}}",
         "ip_address": "{{vs-ip}}",
         "ports": [
@@ -422,6 +425,7 @@
       "LBPool":
       {
         "id": "{{pool-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
         "resource_type": "LBPool",
         "active_monitor_paths": [
           "/infra/lb-monitor-profiles/batchSetupHttpMonitor1"
