@@ -43,8 +43,8 @@
                    "tag": "{{tag-02}}"
                  }
                ],
-                "edge_cluster_path": "/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}"
-                }
+               "edge_cluster_path": "/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}"
+             }
         },
           {
             "resource_type": "ChildSegment",
@@ -75,31 +75,6 @@
             "resource_type": "ChildSegment",
             "Segment": {
               "resource_type": "Segment",
-              "id": "{{Segment2-id}}",
-              "tags": [
-                {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
-                },
-                {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
-                }
-              ],
-              "description": "{{Segment2-description}}",
-              "display_name": "{{Segment2-id}}",
-              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}",
-              "subnets": [
-                {
-                  "gateway_address": "{{Segment2-gw}}"
-                }
-              ]
-            }
-          },
-          {
-            "resource_type": "ChildSegment",
-            "Segment": {
-              "resource_type": "Segment",
               "id": "{{Segment3-id}}",
               "tags": [
                 {
@@ -120,52 +95,7 @@
                 }
               ]
             }
-          },
-          {
-             "resource_type": "ChildPolicyNat",
-             "PolicyNat": {
-             "id": "USER",
-             "tags": [
-               {
-                 "scope": "{{scope-01}}",
-                 "tag": "{{tag-01}}"
-               },
-               {
-                 "scope": "{{scope-02}}",
-                 "tag": "{{tag-02}}"
-               }
-             ],
-             "resource_type": "PolicyNat",
-             "children": [
-                {
-                   "resource_type": "ChildPolicyNatRule",
-                   "PolicyNatRule": {
-                      "resource_type": "PolicyNatRule",
-                      "id": "{{NAT-Rule-id}}",
-                      "tags": [
-                        {
-                          "scope": "{{scope-01}}",
-                          "tag": "{{tag-01}}"
-                        },
-                        {
-                          "scope": "{{scope-02}}",
-                          "tag": "{{tag-02}}"
-                        }
-                      ],
-                      "action": "SNAT",
-                      "source_network": "{{NAT-Source}}",
-                      "service": "",
-                      "translated_network": "{{NAT-IP}}",
-                      "scope": [],
-                      "enabled": true,
-                      "firewall_match": "BYPASS",
-                      "display_name": "{{NAT-Rule-id}}",
-                      "parent_path": "/infra/tier-1s/{{Tier1-name}}/nat/USER"
-                   }
-                }
-             ]
-           }
-        }
+          }
        ]
       }
     },
@@ -337,27 +267,8 @@
                     "/infra/domains/default/groups/{{secgroup1-id}}"
                   ],
                   "services": [
-                    "/infra/services/HTTP"
-                  ],
-                  "scope": [
-                    "/infra/domains/default/groups/{{secgroupblanket-id}}"
-                  ],
-                  "action": "ALLOW"
-                },
-                {
-                  "resource_type": "Rule",
-                  "description": "Communication Entry 2",
-                  "display_name": "{{Rule2-id}}",
-                  "sequence_number": 2,
-                  "logged": true,
-                  "source_groups": [
-                    "/infra/domains/default/groups/{{secgroup1-id}}"
-                  ],
-                  "destination_groups": [
-                    "/infra/domains/default/groups/{{secgroup2-id}}"
-                  ],
-                  "services": [
-                    "/infra/services/HTTP"
+                    "/infra/services/HTTP",
+                    "/infra/services/HTTPS",
                   ],
                   "scope": [
                     "/infra/domains/default/groups/{{secgroupblanket-id}}"
@@ -371,7 +282,7 @@
                   "sequence_number": 3,
                   "logged": true,
                   "source_groups": [
-                    "/infra/domains/default/groups/{{secgroup2-id}}"
+                    "/infra/domains/default/groups/{{secgroup1-id}}"
                   ],
                   "destination_groups": [
                     "/infra/domains/default/groups/{{secgroup3-id}}"
@@ -474,16 +385,6 @@
       "LBClientSslProfile": {
         "resource_type": "LBClientSslProfile",
         "id": "batchSetupClientSslProfile",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
         "cipher_group_label": "CUSTOM",
         "session_cache_enabled": true,
         "ciphers": [
@@ -500,16 +401,6 @@
       "LBServerSslProfile": {
         "resource_type": "LBServerSslProfile",
         "id": "batchSetupServerSslProfile",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
         "cipher_group_label": "CUSTOM",
         "session_cache_enabled": true,
         "ciphers": [
@@ -526,16 +417,6 @@
       "LBAppProfile": {
         "resource_type": "LBHttpProfile",
         "id": "batchSetupHttpAppProfile",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
         "x_forwarded_for": "INSERT"
       }
     },
@@ -544,16 +425,6 @@
       "LBMonitorProfile": {
         "resource_type": "LBHttpMonitorProfile",
         "id": "batchSetupHttpMonitor1",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
         "monitor_port": 80,
         "timeout": 5,
         "response_status_codes": [
@@ -567,16 +438,6 @@
       "LBMonitorProfile": {
         "resource_type": "LBHttpsMonitorProfile",
         "id": "batchSetupHttpsMonitor1",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
         "monitor_port": 443,
         "timeout": 5,
         "response_status_codes": [
