@@ -1,0 +1,80 @@
+{
+  "resource_type": "Infra",
+  "children": [
+    {
+      "resource_type": "ChildTier1",
+      "marked_for_delete": "{{marked_for_delete}}",
+      "Tier1": {
+        "resource_type": "Tier1",
+        "id": "{{Tier1-name}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "description": "{{Tier1-description}}",
+        "display_name": "{{Tier1-name}}",
+        "failover_mode": "{{Tier1-failover_mode}}",
+        "tier0_path":"/infra/tier-0s/Tier-0-GW",
+        "route_advertisement_types": [
+          "TIER1_LB_SNAT",
+          "TIER1_NAT",
+          "TIER1_CONNECTED",
+          "TIER1_LB_VIP"
+        ],
+        "children": [
+          {
+             "resource_type": "ChildPolicyNat",
+             "PolicyNat": {
+             "id": "USER",
+             "tags": [
+               {
+                 "scope": "{{scope-01}}",
+                 "tag": "{{tag-01}}"
+               },
+               {
+                 "scope": "{{scope-02}}",
+                 "tag": "{{tag-02}}"
+               }
+             ],
+             "resource_type": "PolicyNat",
+             "children": [
+                {
+                   "resource_type": "ChildPolicyNatRule",
+                   "PolicyNatRule": {
+                      "resource_type": "PolicyNatRule",
+                      "id": "{{NAT-Rule-id}}",
+                      "tags": [
+                        {
+                          "scope": "{{scope-01}}",
+                          "tag": "{{tag-01}}"
+                        },
+                        {
+                          "scope": "{{scope-02}}",
+                          "tag": "{{tag-02}}"
+                        }
+                      ],
+                      "action": "SNAT",
+                      "source_network": "{{NAT-Source}}",
+                      "service": "",
+                      "translated_network": "{{NAT-IP}}",
+                      "scope": [],
+                      "enabled": true,
+                      "firewall_match": "BYPASS",
+                      "display_name": "{{NAT-Rule-id}}",
+                      "parent_path": "/infra/tier-1s/{{Tier1-name}}/nat/USER"
+                   }
+                }
+             ]
+           }
+          }
+        ]
+       }
+     }
+  ]
+}

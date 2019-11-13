@@ -1,0 +1,201 @@
+{
+  "resource_type": "Infra",
+  "children": [
+    {
+      "resource_type": "ChildLBClientSslProfile",
+      "LBClientSslProfile": {
+        "resource_type": "LBClientSslProfile",
+        "id": "batchSetupClientSslProfile",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "cipher_group_label": "CUSTOM",
+        "session_cache_enabled": true,
+        "ciphers": [
+          "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+          "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        ],
+        "protocols": [
+          "TLS_V1_2"
+        ]
+      }
+    },
+    {
+      "resource_type": "ChildLBServerSslProfile",
+      "LBServerSslProfile": {
+        "resource_type": "LBServerSslProfile",
+        "id": "batchSetupServerSslProfile",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "cipher_group_label": "CUSTOM",
+        "session_cache_enabled": true,
+        "ciphers": [
+          "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+          "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        ],
+        "protocols": [
+          "TLS_V1_2"
+        ]
+      }
+    },
+    {
+      "resource_type": "ChildLBAppProfile",
+      "LBAppProfile": {
+        "resource_type": "LBHttpProfile",
+        "id": "batchSetupHttpAppProfile",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "x_forwarded_for": "INSERT"
+      }
+    },
+    {
+      "resource_type": "ChildLBMonitorProfile",
+      "LBMonitorProfile": {
+        "resource_type": "LBHttpMonitorProfile",
+        "id": "batchSetupHttpMonitor1",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "monitor_port": 80,
+        "timeout": 5,
+        "response_status_codes": [
+          200,
+          300
+        ]
+      }
+    },
+    {
+      "resource_type": "ChildLBMonitorProfile",
+      "LBMonitorProfile": {
+        "resource_type": "LBHttpsMonitorProfile",
+        "id": "batchSetupHttpsMonitor1",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "monitor_port": 443,
+        "timeout": 5,
+        "response_status_codes": [
+          200
+        ]
+      }
+    },
+    {
+      "resource_type": "ChildLBService",
+      "LBService": {
+        "resource_type": "LBService",
+        "id": "{{lb-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "connectivity_path": "/infra/tier-1s/{{Tier1-name}}",
+        "error_log_level": "DEBUG",
+        "access_log_enabled": true
+      }
+    },
+    {
+      "resource_type": "ChildLBVirtualServer",
+      "LBVirtualServer": {
+        "resource_type": "LBVirtualServer",
+        "id": "{{vs-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "lb_service_path": "/infra/lb-services/{{lb-id}}",
+        "ip_address": "{{vs-ip}}",
+        "ports": [
+          "80"
+        ],
+        "pool_path": "/infra/lb-pools/{{pool-id}}",
+        "application_profile_path": "/infra/lb-app-profiles/batchSetupHttpAppProfile"
+        }
+      },
+    {
+      "resource_type": "ChildLBPool",
+      "LBPool":
+      {
+        "id": "{{pool-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "resource_type": "LBPool",
+        "active_monitor_paths": [
+          "/infra/lb-monitor-profiles/default-icmp-lb-monitor"
+        ],
+            "algorithm": "ROUND_ROBIN",
+            "member_group": {
+                "group_path": "/infra/domains/default/groups/{{secgroup1-id}}",
+                "ip_revision_filter": "IPV4"
+            },
+            "snat_translation": {
+                "type": "LBSnatDisabled"
+            }
+      }
+    }
+  ]
+}

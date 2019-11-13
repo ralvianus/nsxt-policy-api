@@ -1,25 +1,39 @@
+PATCH /policy/api/v1/infra/ HTTP/1.1
+Host: nsxapp-02a.corp.local:44321
+Authorization: Basic YWRtaW46QWRtaW4hMjNBZG1pbg==,Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==
+Content-Type: application/json
+Postman-Token: 873c52d3-9759-44a2-bda7-becda0a96575,adeb8f3a-0406-4724-89aa-6763e19be4fa
+cache-control: no-cache,no-cache
+User-Agent: PostmanRuntime/7.19.0
+Accept: */*
+Host: nsxapp-02a.corp.local:44321
+Accept-Encoding: gzip, deflate
+Content-Length: 13556
+Cookie: JSESSIONID=5DB990EC6EE05FEF4CD53079D25B4C9C
+Connection: keep-alive
+
 {
   "resource_type": "Infra",
   "children": [
     {
       "resource_type": "ChildTier1",
-      "marked_for_delete": "{{marked_for_delete}}",
+      "marked_for_delete": "false",
       "Tier1": {
         "resource_type": "Tier1",
-        "id": "{{Tier1-name}}",
+        "id": "prod-tier-1-gw",
         "tags": [
           {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
+            "scope": "app",
+            "tag": "3-tier"
           },
           {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
+            "scope": "env",
+            "tag": "prod"
           }
         ],
-        "description": "{{Tier1-description}}",
-        "display_name": "{{Tier1-name}}",
-        "failover_mode": "{{Tier1-failover_mode}}",
+        "description": "Created by Policy API",
+        "display_name": "prod-tier-1-gw",
+        "failover_mode": "NON_PREEMPTIVE",
         "tier0_path":"/infra/tier-0s/Tier-0-GW",
         "route_advertisement_types": [
           "TIER1_LB_SNAT",
@@ -36,38 +50,38 @@
                "marked_for_delete": "false",
                "tags": [
                  {
-                   "scope": "{{scope-01}}",
-                   "tag": "{{tag-01}}"
+                   "scope": "app",
+                   "tag": "3-tier"
                  },
                  {
-                   "scope": "{{scope-02}}",
-                   "tag": "{{tag-02}}"
+                   "scope": "env",
+                   "tag": "prod"
                  }
                ],
-                "edge_cluster_path": "/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}"
+                "edge_cluster_path": "/infra/sites/default/enforcement-points/default/edge-clusters/ec6f2915-c5a5-45b0-8f9c-ec6dadb692a6"
                 }
         },
           {
             "resource_type": "ChildSegment",
             "Segment": {
               "resource_type": "Segment",
-              "id": "{{Segment1-id}}",
+              "id": "PROD-WEB-Segment",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
-              "description": "{{Segment1-description}}",
-              "display_name": "{{Segment1-id}}",
-              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}",
+              "description": "Created by Policy API",
+              "display_name": "PROD-WEB-Segment",
+              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/cff37dc1-3a76-423a-a326-d990f5cc814d",
               "subnets": [
                 {
-                  "gateway_address": "{{Segment1-gw}}"
+                  "gateway_address": "172.16.10.1/24"
                 }
               ]
             }
@@ -76,23 +90,23 @@
             "resource_type": "ChildSegment",
             "Segment": {
               "resource_type": "Segment",
-              "id": "{{Segment2-id}}",
+              "id": "PROD-APP-Segment",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
-              "description": "{{Segment2-description}}",
-              "display_name": "{{Segment2-id}}",
-              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}",
+              "description": "Created by Policy API",
+              "display_name": "PROD-APP-Segment",
+              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/cff37dc1-3a76-423a-a326-d990f5cc814d",
               "subnets": [
                 {
-                  "gateway_address": "{{Segment2-gw}}"
+                  "gateway_address": "172.16.20.1/24"
                 }
               ]
             }
@@ -101,23 +115,23 @@
             "resource_type": "ChildSegment",
             "Segment": {
               "resource_type": "Segment",
-              "id": "{{Segment3-id}}",
+              "id": "PROD-DB-Segment",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
-              "description": "{{Segment3-description}}",
-              "display_name": "{{Segment3-id}}",
-              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}",
+              "description": "Created by Policy API",
+              "display_name": "PROD-DB-Segment",
+              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/cff37dc1-3a76-423a-a326-d990f5cc814d",
               "subnets": [
                 {
-                  "gateway_address": "{{Segment3-gw}}"
+                  "gateway_address": "172.16.30.1/24"
                 }
               ]
             }
@@ -132,12 +146,12 @@
         "id": "default",
         "tags": [
           {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
+            "scope": "app",
+            "tag": "3-tier"
           },
           {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
+            "scope": "env",
+            "tag": "prod"
           }
         ],
         "resource_type": "Domain",
@@ -149,24 +163,24 @@
             "resource_type": "ChildGroup",
             "Group": {
               "resource_type": "Group",
-              "marked_for_delete": "{{marked_for_delete}}",
-              "description": "{{secgroup1-id}}",
-              "display_name": "{{secgroup1-id}}",
-              "id": "{{secgroup1-id}}",
+              "marked_for_delete": "false",
+              "description": "prod-web-vms",
+              "display_name": "prod-web-vms",
+              "id": "prod-web-vms",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
               "expression": [
                 {
                   "member_type": "VirtualMachine",
-                  "value": "{{scope}}|{{sectag1}}",
+                  "value": "secgroup|prodweb",
                   "key": "Tag",
                   "operator": "EQUALS",
                   "resource_type": "Condition"
@@ -178,24 +192,24 @@
             "resource_type": "ChildGroup",
             "Group": {
               "resource_type": "Group",
-              "marked_for_delete": "{{marked_for_delete}}",
-              "description": "{{secgroup2-id}}",
-              "display_name": "{{secgroup2-id}}",
-              "id": "{{secgroup2-id}}",
+              "marked_for_delete": "false",
+              "description": "prod-app-vms",
+              "display_name": "prod-app-vms",
+              "id": "prod-app-vms",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
               "expression": [
                 {
                   "member_type": "VirtualMachine",
-                  "value": "{{scope}}|{{sectag2}}",
+                  "value": "secgroup|prodapp",
                   "key": "Tag",
                   "operator": "EQUALS",
                   "resource_type": "Condition"
@@ -207,24 +221,24 @@
             "resource_type": "ChildGroup",
             "Group": {
               "resource_type": "Group",
-              "marked_for_delete": "{{marked_for_delete}}",
-              "description": "{{secgroup3-id}}",
-              "display_name": "{{secgroup3-id}}",
-              "id": "{{secgroup3-id}}",
+              "marked_for_delete": "false",
+              "description": "prod-db-vms",
+              "display_name": "prod-db-vms",
+              "id": "prod-db-vms",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
               "expression": [
                 {
                   "member_type": "VirtualMachine",
-                  "value": "{{scope}}|{{sectag3}}",
+                  "value": "secgroup|proddb",
                   "key": "Tag",
                   "operator": "EQUALS",
                   "resource_type": "Condition"
@@ -236,24 +250,24 @@
             "resource_type": "ChildGroup",
             "Group": {
               "resource_type": "Group",
-              "marked_for_delete": "{{marked_for_delete}}",
-              "description": "{{secgroupblanket-id}}",
-              "display_name": "{{secgroupblanket-id}}",
-              "id": "{{secgroupblanket-id}}",
+              "marked_for_delete": "false",
+              "description": "prod-3tier-app",
+              "display_name": "prod-3tier-app",
+              "id": "prod-3tier-app",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
               "expression": [
                 {
                   "member_type": "VirtualMachine",
-                  "value": "{{scope}}|{{sectagblanket}}",
+                  "value": "secgroup|prod-3tier-app",
                   "key": "Tag",
                   "operator": "EQUALS",
                   "resource_type": "Condition"
@@ -263,81 +277,81 @@
           },
           {
             "resource_type": "ChildSecurityPolicy",
-            "marked_for_delete": "{{marked_for_delete}}",
+            "marked_for_delete": "false",
             "SecurityPolicy": {
-              "id": "{{EW-securitypolicy-section-id}}",
+              "id": "prod-3tier-app-policy",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
               "resource_type": "SecurityPolicy",
               "description": "communication map",
-              "display_name": "{{EW-securitypolicy-section-id}}",
+              "display_name": "prod-3tier-app-policy",
               "rules": [
                 {
                   "resource_type": "Rule",
                   "description": "Communication Entry",
-                  "display_name": "{{Rule1-id}}",
+                  "display_name": "any-to-web",
                   "sequence_number": 1,
                   "logged": true,
                   "source_groups": [
                     "ANY"
                   ],
                   "destination_groups": [
-                    "/infra/domains/default/groups/{{secgroup1-id}}"
+                    "/infra/domains/default/groups/prod-web-vms"
                   ],
                   "services": [
                     "/infra/services/HTTP",
                     "/infra/services/HTTPS"
                   ],
                   "scope": [
-                    "/infra/domains/default/groups/{{secgroupblanket-id}}"
+                    "/infra/domains/default/groups/prod-3tier-app"
                   ],
                   "action": "ALLOW"
                 },
                 {
                   "resource_type": "Rule",
                   "description": "Communication Entry 2",
-                  "display_name": "{{Rule2-id}}",
+                  "display_name": "web-to-app",
                   "sequence_number": 2,
                   "logged": true,
                   "source_groups": [
-                    "/infra/domains/default/groups/{{secgroup1-id}}"
+                    "/infra/domains/default/groups/prod-web-vms"
                   ],
                   "destination_groups": [
-                    "/infra/domains/default/groups/{{secgroup2-id}}"
+                    "/infra/domains/default/groups/prod-app-vms"
                   ],
                   "services": [
                     "/infra/services/HTTP"
                   ],
                   "scope": [
-                    "/infra/domains/default/groups/{{secgroupblanket-id}}"
+                    "/infra/domains/default/groups/prod-3tier-app"
                   ],
                   "action": "ALLOW"
                 },
                 {
                   "resource_type": "Rule",
                   "description": "Communication Entry 3",
-                  "display_name": "{{Rule3-id}}",
+                  "display_name": "app-to-db",
                   "sequence_number": 3,
                   "logged": true,
                   "source_groups": [
-                    "/infra/domains/default/groups/{{secgroup2-id}}"
+                    "/infra/domains/default/groups/prod-app-vms"
                   ],
                   "destination_groups": [
-                    "/infra/domains/default/groups/{{secgroup3-id}}"
+                    "/infra/domains/default/groups/prod-db-vms"
                   ],
                   "services": [
                     "/infra/services/MySQL"
                   ],
                   "scope": [
-                    "/infra/domains/default/groups/{{secgroupblanket-id}}"
+                    "/infra/domains/default/groups/prod-3tier-app"
                   ],
                   "action": "ALLOW"
                 }
@@ -346,30 +360,30 @@
           },
           {
             "resource_type": "ChildGatewayPolicy",
-            "marked_for_delete": "{{marked_for_delete}}",
+            "marked_for_delete": "false",
             "GatewayPolicy": {
               "resource_type": "GatewayPolicy",
-              "id": "{{NS-securitypolicy-section-id}}",
+              "id": "prod-3tier-app",
               "tags": [
                 {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
+                  "scope": "app",
+                  "tag": "3-tier"
                 },
                 {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
+                  "scope": "env",
+                  "tag": "prod"
                 }
               ],
-              "display_name": "{{NS-securitypolicy-section-id}}",
+              "display_name": "prod-3tier-app",
               "parent_path": "/infra/domains/default",
-              "marked_for_delete": "{{marked_for_delete}}",
+              "marked_for_delete": "false",
               "rules": [
                 {
                  "source_groups": [
                         "ANY"
                     ],
                     "destination_groups": [
-                        "/infra/domains/default/groups/{{secgroup1-id}}"
+                        "/infra/domains/default/groups/prod-web-vms"
                     ],
                     "services": [
                         "/infra/services/HTTP",
@@ -381,7 +395,7 @@
                     "action": "ALLOW",
                     "logged": true,
                     "scope": [
-                        "/infra/tier-1s/{{Tier1-name}}"
+                        "/infra/tier-1s/prod-tier-1-gw"
                     ],
                     "disabled": false,
                     "notes": "",
@@ -397,9 +411,9 @@
                         "ANY"
                     ],
                     "destination_groups": [
-                        "/infra/domains/default/groups/{{secgroup1-id}}",
-                        "/infra/domains/default/groups/{{secgroup2-id}}",
-                        "/infra/domains/default/groups/{{secgroup3-id}}"
+                        "/infra/domains/default/groups/prod-web-vms",
+                        "/infra/domains/default/groups/prod-app-vms",
+                        "/infra/domains/default/groups/prod-db-vms"
                     ],
                     "services": [
                         "ANY"
@@ -410,7 +424,7 @@
                     "action": "DROP",
                     "logged": false,
                     "scope": [
-                        "/infra/tier-1s/{{Tier1-name}}"
+                        "/infra/tier-1s/prod-tier-1-gw"
                     ],
                     "disabled": false,
                     "notes": "",
