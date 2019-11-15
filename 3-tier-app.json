@@ -121,7 +121,32 @@
                 }
               ]
             }
-          }
+          },
+          {
+            "resource_type": "ChildSegment",
+            "Segment": {
+              "resource_type": "Segment",
+              "id": "{{Segment4-id}}",
+              "tags": [
+                {
+                  "scope": "{{scope-01}}",
+                  "tag": "{{tag-01}}"
+                },
+                {
+                  "scope": "{{scope-02}}",
+                  "tag": "{{tag-02}}"
+                }
+              ],
+              "description": "{{Segment4-description}}",
+              "display_name": "{{Segment4-id}}",
+              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}",
+              "subnets": [
+                {
+                  "gateway_address": "{{Segment4-gw}}"
+                }
+              ]
+            }
+          },
        ]
       }
     },
