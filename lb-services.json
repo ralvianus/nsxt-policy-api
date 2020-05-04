@@ -2,60 +2,6 @@
   "resource_type": "Infra",
   "children": [
     {
-      "resource_type": "ChildLBClientSslProfile",
-      "LBClientSslProfile": {
-        "resource_type": "LBClientSslProfile",
-        "id": "batchSetupClientSslProfile",
-        "marked_for_delete": "{{marked_for_delete}}",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
-        "cipher_group_label": "CUSTOM",
-        "session_cache_enabled": true,
-        "ciphers": [
-          "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
-          "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
-        ],
-        "protocols": [
-          "TLS_V1_2"
-        ]
-      }
-    },
-    {
-      "resource_type": "ChildLBServerSslProfile",
-      "LBServerSslProfile": {
-        "resource_type": "LBServerSslProfile",
-        "id": "batchSetupServerSslProfile",
-        "marked_for_delete": "{{marked_for_delete}}",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
-        "cipher_group_label": "CUSTOM",
-        "session_cache_enabled": true,
-        "ciphers": [
-          "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
-          "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
-        ],
-        "protocols": [
-          "TLS_V1_2"
-        ]
-      }
-    },
-    {
       "resource_type": "ChildLBAppProfile",
       "LBAppProfile": {
         "resource_type": "LBHttpProfile",
@@ -72,53 +18,6 @@
           }
         ],
         "x_forwarded_for": "INSERT"
-      }
-    },
-    {
-      "resource_type": "ChildLBMonitorProfile",
-      "LBMonitorProfile": {
-        "resource_type": "LBHttpMonitorProfile",
-        "id": "batchSetupHttpMonitor1",
-        "marked_for_delete": "{{marked_for_delete}}",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
-        "monitor_port": 80,
-        "timeout": 5,
-        "response_status_codes": [
-          200,
-          300
-        ]
-      }
-    },
-    {
-      "resource_type": "ChildLBMonitorProfile",
-      "LBMonitorProfile": {
-        "resource_type": "LBHttpsMonitorProfile",
-        "id": "batchSetupHttpsMonitor1",
-        "marked_for_delete": "{{marked_for_delete}}",
-        "tags": [
-          {
-            "scope": "{{scope-01}}",
-            "tag": "{{tag-01}}"
-          },
-          {
-            "scope": "{{scope-02}}",
-            "tag": "{{tag-02}}"
-          }
-        ],
-        "monitor_port": 443,
-        "timeout": 5,
-        "response_status_codes": [
-          200
-        ]
       }
     },
     {

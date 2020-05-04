@@ -20,7 +20,7 @@
         "description": "{{Tier1-description}}",
         "display_name": "{{Tier1-name}}",
         "failover_mode": "{{Tier1-failover_mode}}",
-        "tier0_path":"/infra/tier-0s/Tier-0-GW",
+        "tier0_path":"/infra/tier-0s/{{Tier0-name}}",
         "route_advertisement_types": [
           "TIER1_LB_SNAT",
           "TIER1_NAT",
@@ -314,7 +314,7 @@
                     "/infra/domains/default/groups/{{secgroup2-id}}"
                   ],
                   "services": [
-                    "/infra/services/HTTP"
+                    "/infra/services/TCP_8443"
                   ],
                   "scope": [
                     "/infra/domains/default/groups/{{secgroupblanket-id}}"
@@ -343,89 +343,104 @@
                 }
               ]
             }
-          },
-          {
-            "resource_type": "ChildGatewayPolicy",
-            "marked_for_delete": "{{marked_for_delete}}",
-            "GatewayPolicy": {
-              "resource_type": "GatewayPolicy",
-              "id": "{{NS-securitypolicy-section-id}}",
-              "tags": [
-                {
-                  "scope": "{{scope-01}}",
-                  "tag": "{{tag-01}}"
-                },
-                {
-                  "scope": "{{scope-02}}",
-                  "tag": "{{tag-02}}"
-                }
-              ],
-              "display_name": "{{NS-securitypolicy-section-id}}",
-              "parent_path": "/infra/domains/default",
-              "marked_for_delete": "{{marked_for_delete}}",
-              "rules": [
-                {
-                 "source_groups": [
-                        "ANY"
-                    ],
-                    "destination_groups": [
-                        "/infra/domains/default/groups/{{secgroup1-id}}"
-                    ],
-                    "services": [
-                        "/infra/services/HTTP",
-                        "/infra/services/HTTPS"
-                    ],
-                    "profiles": [
-                        "ANY"
-                    ],
-                    "action": "ALLOW",
-                    "logged": true,
-                    "scope": [
-                        "/infra/tier-1s/{{Tier1-name}}"
-                    ],
-                    "disabled": false,
-                    "notes": "",
-                    "direction": "IN_OUT",
-                    "tag": "",
-                    "ip_protocol": "IPV4_IPV6",
-                    "resource_type": "Rule",
-                    "id": "Any-to-web",
-                    "display_name": "Any-to-web"
-                },
-                {
-                 "source_groups": [
-                        "ANY"
-                    ],
-                    "destination_groups": [
-                        "/infra/domains/default/groups/{{secgroup1-id}}",
-                        "/infra/domains/default/groups/{{secgroup2-id}}",
-                        "/infra/domains/default/groups/{{secgroup3-id}}"
-                    ],
-                    "services": [
-                        "ANY"
-                    ],
-                    "profiles": [
-                        "ANY"
-                    ],
-                    "action": "DROP",
-                    "logged": false,
-                    "scope": [
-                        "/infra/tier-1s/{{Tier1-name}}"
-                    ],
-                    "disabled": false,
-                    "notes": "",
-                    "direction": "IN_OUT",
-                    "tag": "",
-                    "ip_protocol": "IPV4_IPV6",
-                    "resource_type": "Rule",
-                    "id": "DenyAny",
-                    "display_name": "DenyAny"
-                }
-               ]
-            }
           }
           ]
         }
+    },
+    {
+      "resource_type": "ChildLBAppProfile",
+      "LBAppProfile": {
+        "resource_type": "LBHttpProfile",
+        "id": "batchSetupHttpAppProfile",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "x_forwarded_for": "INSERT"
+      }
+    },
+    {
+      "resource_type": "ChildLBService",
+      "LBService": {
+        "resource_type": "LBService",
+        "id": "{{lb-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "connectivity_path": "/infra/tier-1s/{{Tier1-name}}",
+        "error_log_level": "DEBUG",
+        "access_log_enabled": true
+      }
+    },
+    {
+      "resource_type": "ChildLBVirtualServer",
+      "LBVirtualServer": {
+        "resource_type": "LBVirtualServer",
+        "id": "{{vs-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "lb_service_path": "/infra/lb-services/{{lb-id}}",
+        "ip_address": "{{vs-ip}}",
+        "ports": [
+          "80"
+        ],
+        "pool_path": "/infra/lb-pools/{{pool-id}}",
+        "application_profile_path": "/infra/lb-app-profiles/batchSetupHttpAppProfile"
+        }
+      },
+    {
+      "resource_type": "ChildLBPool",
+      "LBPool":
+      {
+        "id": "{{pool-id}}",
+        "marked_for_delete": "{{marked_for_delete}}",
+        "tags": [
+          {
+            "scope": "{{scope-01}}",
+            "tag": "{{tag-01}}"
+          },
+          {
+            "scope": "{{scope-02}}",
+            "tag": "{{tag-02}}"
+          }
+        ],
+        "resource_type": "LBPool",
+        "active_monitor_paths": [
+          "/infra/lb-monitor-profiles/default-icmp-lb-monitor"
+        ],
+            "algorithm": "ROUND_ROBIN",
+            "member_group": {
+                "group_path": "/infra/domains/default/groups/{{secgroup1-id}}",
+                "ip_revision_filter": "IPV4"
+            },
+            "snat_translation": {
+                "type": "LBSnatDisabled"
+            }
+      }
     }
   ]
 }
