@@ -1,72 +1,44 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "021ed736-5ab8-43e7-b8e0-ceafbd87d35c",
 		"name": "NSX Policy API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "c3c00e8e-5410-c09a-0cb1-7eb173501087",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Patch - Create 3-Tier App Network",
 			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "VMware1!VMware1!",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/",
 				"method": "PATCH",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic YWRtaW46QWRtaW4hMjNBZG1pbg=="
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
 					},
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"description": ""
 					},
 					{
 						"key": "Postman-Token",
-						"value": "873c52d3-9759-44a2-bda7-becda0a96575"
+						"value": "873c52d3-9759-44a2-bda7-becda0a96575",
+						"description": ""
 					},
 					{
 						"key": "cache-control",
-						"value": "no-cache"
+						"value": "no-cache",
+						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"resource_type\": \"Infra\",\n  \"children\": [\n    {\n      \"resource_type\": \"ChildTier1\",\n      \"marked_for_delete\": \"{{marked_for_delete}}\",\n      \"Tier1\": {\n        \"resource_type\": \"Tier1\",\n        \"id\": \"{{Tier1-name}}\",\n        \"tags\": [\n          {\n            \"scope\": \"{{scope-01}}\",\n            \"tag\": \"{{tag-01}}\"\n          },\n          {\n            \"scope\": \"{{scope-02}}\",\n            \"tag\": \"{{tag-02}}\"\n          }\n        ],\n        \"description\": \"{{Tier1-description}}\",\n        \"display_name\": \"{{Tier1-name}}\",\n        \"failover_mode\": \"{{Tier1-failover_mode}}\",\n        \"tier0_path\":\"/infra/tier-0s/Tier-0-GW\",\n        \"route_advertisement_types\": [\n          \"TIER1_LB_SNAT\",\n          \"TIER1_NAT\",\n          \"TIER1_CONNECTED\",\n          \"TIER1_LB_VIP\"\n        ],\n        \"children\": [\n          {\n           \"resource_type\":\"ChildLocaleServices\",\n           \"LocaleServices\":{\n               \"resource_type\":\"LocaleServices\",\n               \"id\":  \"default\",\n               \"marked_for_delete\": \"false\",\n               \"tags\": [\n                 {\n                   \"scope\": \"{{scope-01}}\",\n                   \"tag\": \"{{tag-01}}\"\n                 },\n                 {\n                   \"scope\": \"{{scope-02}}\",\n                   \"tag\": \"{{tag-02}}\"\n                 }\n               ],\n                \"edge_cluster_path\": \"/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}\"\n                }\n        },\n          {\n            \"resource_type\": \"ChildSegment\",\n            \"Segment\": {\n              \"resource_type\": \"Segment\",\n              \"id\": \"{{Segment1-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"description\": \"{{Segment1-description}}\",\n              \"display_name\": \"{{Segment1-id}}\",\n              \"transport_zone_path\": \"/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}\",\n              \"subnets\": [\n                {\n                  \"gateway_address\": \"{{Segment1-gw}}\"\n                }\n              ]\n            }\n          },\n          {\n            \"resource_type\": \"ChildSegment\",\n            \"Segment\": {\n              \"resource_type\": \"Segment\",\n              \"id\": \"{{Segment2-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"description\": \"{{Segment2-description}}\",\n              \"display_name\": \"{{Segment2-id}}\",\n              \"transport_zone_path\": \"/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}\",\n              \"subnets\": [\n                {\n                  \"gateway_address\": \"{{Segment2-gw}}\"\n                }\n              ]\n            }\n          },\n          {\n            \"resource_type\": \"ChildSegment\",\n            \"Segment\": {\n              \"resource_type\": \"Segment\",\n              \"id\": \"{{Segment3-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"description\": \"{{Segment3-description}}\",\n              \"display_name\": \"{{Segment3-id}}\",\n              \"transport_zone_path\": \"/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}\",\n              \"subnets\": [\n                {\n                  \"gateway_address\": \"{{Segment3-gw}}\"\n                }\n              ]\n            }\n          }\n       ]\n      }\n    },\n    {\n      \"resource_type\": \"ChildDomain\",\n      \"marked_for_delete\": \"false\",\n      \"Domain\": {\n        \"id\": \"default\",\n        \"tags\": [\n          {\n            \"scope\": \"{{scope-01}}\",\n            \"tag\": \"{{tag-01}}\"\n          },\n          {\n            \"scope\": \"{{scope-02}}\",\n            \"tag\": \"{{tag-02}}\"\n          }\n        ],\n        \"resource_type\": \"Domain\",\n        \"description\": \"default\",\n        \"display_name\": \"default\",\n        \"marked_for_delete\": \"false\",\n        \"children\": [\n          {\n            \"resource_type\": \"ChildGroup\",\n            \"Group\": {\n              \"resource_type\": \"Group\",\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\n              \"description\": \"{{secgroup1-id}}\",\n              \"display_name\": \"{{secgroup1-id}}\",\n              \"id\": \"{{secgroup1-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"expression\": [\n                {\n                  \"member_type\": \"VirtualMachine\",\n                  \"value\": \"{{scope}}|{{sectag1}}\",\n                  \"key\": \"Tag\",\n                  \"operator\": \"EQUALS\",\n                  \"resource_type\": \"Condition\"\n                }\n              ]\n            }\n          },\n          {\n            \"resource_type\": \"ChildGroup\",\n            \"Group\": {\n              \"resource_type\": \"Group\",\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\n              \"description\": \"{{secgroup2-id}}\",\n              \"display_name\": \"{{secgroup2-id}}\",\n              \"id\": \"{{secgroup2-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"expression\": [\n                {\n                  \"member_type\": \"VirtualMachine\",\n                  \"value\": \"{{scope}}|{{sectag2}}\",\n                  \"key\": \"Tag\",\n                  \"operator\": \"EQUALS\",\n                  \"resource_type\": \"Condition\"\n                }\n              ]\n            }\n          },\n          {\n            \"resource_type\": \"ChildGroup\",\n            \"Group\": {\n              \"resource_type\": \"Group\",\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\n              \"description\": \"{{secgroup3-id}}\",\n              \"display_name\": \"{{secgroup3-id}}\",\n              \"id\": \"{{secgroup3-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"expression\": [\n                {\n                  \"member_type\": \"VirtualMachine\",\n                  \"value\": \"{{scope}}|{{sectag3}}\",\n                  \"key\": \"Tag\",\n                  \"operator\": \"EQUALS\",\n                  \"resource_type\": \"Condition\"\n                }\n              ]\n            }\n          },\n          {\n            \"resource_type\": \"ChildGroup\",\n            \"Group\": {\n              \"resource_type\": \"Group\",\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\n              \"description\": \"{{secgroupblanket-id}}\",\n              \"display_name\": \"{{secgroupblanket-id}}\",\n              \"id\": \"{{secgroupblanket-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"expression\": [\n                {\n                  \"member_type\": \"VirtualMachine\",\n                  \"value\": \"{{scope}}|{{sectagblanket}}\",\n                  \"key\": \"Tag\",\n                  \"operator\": \"EQUALS\",\n                  \"resource_type\": \"Condition\"\n                }\n              ]\n            }\n          },\n          {\n            \"resource_type\": \"ChildSecurityPolicy\",\n            \"marked_for_delete\": \"{{marked_for_delete}}\",\n            \"SecurityPolicy\": {\n              \"id\": \"{{EW-securitypolicy-section-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"resource_type\": \"SecurityPolicy\",\n              \"description\": \"communication map\",\n              \"display_name\": \"{{EW-securitypolicy-section-id}}\",\n              \"rules\": [\n                {\n                  \"resource_type\": \"Rule\",\n                  \"description\": \"Communication Entry\",\n                  \"display_name\": \"{{Rule1-id}}\",\n                  \"sequence_number\": 1,\n                  \"logged\": true,\n                  \"source_groups\": [\n                    \"ANY\"\n                  ],\n                  \"destination_groups\": [\n                    \"/infra/domains/default/groups/{{secgroup1-id}}\"\n                  ],\n                  \"services\": [\n                    \"/infra/services/HTTP\",\n                    \"/infra/services/HTTPS\"\n                  ],\n                  \"scope\": [\n                    \"/infra/domains/default/groups/{{secgroupblanket-id}}\"\n                  ],\n                  \"action\": \"ALLOW\"\n                },\n                {\n                  \"resource_type\": \"Rule\",\n                  \"description\": \"Communication Entry 2\",\n                  \"display_name\": \"{{Rule2-id}}\",\n                  \"sequence_number\": 2,\n                  \"logged\": true,\n                  \"source_groups\": [\n                    \"/infra/domains/default/groups/{{secgroup1-id}}\"\n                  ],\n                  \"destination_groups\": [\n                    \"/infra/domains/default/groups/{{secgroup2-id}}\"\n                  ],\n                  \"services\": [\n                    \"/infra/services/HTTP\"\n                  ],\n                  \"scope\": [\n                    \"/infra/domains/default/groups/{{secgroupblanket-id}}\"\n                  ],\n                  \"action\": \"ALLOW\"\n                },\n                {\n                  \"resource_type\": \"Rule\",\n                  \"description\": \"Communication Entry 3\",\n                  \"display_name\": \"{{Rule3-id}}\",\n                  \"sequence_number\": 3,\n                  \"logged\": true,\n                  \"source_groups\": [\n                    \"/infra/domains/default/groups/{{secgroup2-id}}\"\n                  ],\n                  \"destination_groups\": [\n                    \"/infra/domains/default/groups/{{secgroup3-id}}\"\n                  ],\n                  \"services\": [\n                    \"/infra/services/MySQL\"\n                  ],\n                  \"scope\": [\n                    \"/infra/domains/default/groups/{{secgroupblanket-id}}\"\n                  ],\n                  \"action\": \"ALLOW\"\n                }\n              ]\n            }\n          },\n          {\n            \"resource_type\": \"ChildGatewayPolicy\",\n            \"marked_for_delete\": \"{{marked_for_delete}}\",\n            \"GatewayPolicy\": {\n              \"resource_type\": \"GatewayPolicy\",\n              \"id\": \"{{NS-securitypolicy-section-id}}\",\n              \"tags\": [\n                {\n                  \"scope\": \"{{scope-01}}\",\n                  \"tag\": \"{{tag-01}}\"\n                },\n                {\n                  \"scope\": \"{{scope-02}}\",\n                  \"tag\": \"{{tag-02}}\"\n                }\n              ],\n              \"display_name\": \"{{NS-securitypolicy-section-id}}\",\n              \"parent_path\": \"/infra/domains/default\",\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\n              \"rules\": [\n                {\n                 \"source_groups\": [\n                        \"ANY\"\n                    ],\n                    \"destination_groups\": [\n                        \"/infra/domains/default/groups/{{secgroup1-id}}\"\n                    ],\n                    \"services\": [\n                        \"/infra/services/HTTP\",\n                        \"/infra/services/HTTPS\"\n                    ],\n                    \"profiles\": [\n                        \"ANY\"\n                    ],\n                    \"action\": \"ALLOW\",\n                    \"logged\": true,\n                    \"scope\": [\n                        \"/infra/tier-1s/{{Tier1-name}}\"\n                    ],\n                    \"disabled\": false,\n                    \"notes\": \"\",\n                    \"direction\": \"IN_OUT\",\n                    \"tag\": \"\",\n                    \"ip_protocol\": \"IPV4_IPV6\",\n                    \"resource_type\": \"Rule\",\n                    \"id\": \"Any-to-web\",\n                    \"display_name\": \"Any-to-web\"\n                },\n                {\n                 \"source_groups\": [\n                        \"ANY\"\n                    ],\n                    \"destination_groups\": [\n                        \"/infra/domains/default/groups/{{secgroup1-id}}\",\n                        \"/infra/domains/default/groups/{{secgroup2-id}}\",\n                        \"/infra/domains/default/groups/{{secgroup3-id}}\"\n                    ],\n                    \"services\": [\n                        \"ANY\"\n                    ],\n                    \"profiles\": [\n                        \"ANY\"\n                    ],\n                    \"action\": \"DROP\",\n                    \"logged\": false,\n                    \"scope\": [\n                        \"/infra/tier-1s/{{Tier1-name}}\"\n                    ],\n                    \"disabled\": false,\n                    \"notes\": \"\",\n                    \"direction\": \"IN_OUT\",\n                    \"tag\": \"\",\n                    \"ip_protocol\": \"IPV4_IPV6\",\n                    \"resource_type\": \"Rule\",\n                    \"id\": \"DenyAny\",\n                    \"display_name\": \"DenyAny\"\n                }\n               ]\n            }\n          }\n          ]\n        }\n    }\n  ]\n}\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n  \"resource_type\": \"Infra\",\r\n  \"children\": [\r\n    {\r\n      \"resource_type\": \"ChildTier1\",\r\n      \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n      \"Tier1\": {\r\n        \"resource_type\": \"Tier1\",\r\n        \"id\": \"{{Tier1-name}}\",\r\n        \"tags\": [\r\n          {\r\n            \"scope\": \"{{scope-01}}\",\r\n            \"tag\": \"{{tag-01}}\"\r\n          },\r\n          {\r\n            \"scope\": \"{{scope-02}}\",\r\n            \"tag\": \"{{tag-02}}\"\r\n          }\r\n        ],\r\n        \"description\": \"{{Tier1-description}}\",\r\n        \"display_name\": \"{{Tier1-name}}\",\r\n        \"failover_mode\": \"{{Tier1-failover_mode}}\",\r\n        \"tier0_path\":\"/infra/tier-0s/{{Tier0-name}}\",\r\n        \"route_advertisement_types\": [\r\n          \"TIER1_LB_SNAT\",\r\n          \"TIER1_NAT\",\r\n          \"TIER1_CONNECTED\",\r\n          \"TIER1_LB_VIP\"\r\n        ],\r\n        \"children\": [\r\n          {\r\n           \"resource_type\":\"ChildLocaleServices\",\r\n           \"LocaleServices\":{\r\n               \"resource_type\":\"LocaleServices\",\r\n               \"id\":  \"{{domain_id}}\",\r\n               \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n               \"tags\": [\r\n                 {\r\n                   \"scope\": \"{{scope-01}}\",\r\n                   \"tag\": \"{{tag-01}}\"\r\n                 },\r\n                 {\r\n                   \"scope\": \"{{scope-02}}\",\r\n                   \"tag\": \"{{tag-02}}\"\r\n                 }\r\n               ],\r\n                \"edge_cluster_path\": \"/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}\"\r\n                }\r\n        },\r\n          {\r\n            \"resource_type\": \"ChildSegment\",\r\n            \"Segment\": {\r\n              \"resource_type\": \"Segment\",\r\n              \"id\": \"{{Segment1-id}}\",\r\n              \"tags\": [\r\n                {\r\n                  \"scope\": \"{{scope-01}}\",\r\n                  \"tag\": \"{{tag-01}}\"\r\n                },\r\n                {\r\n                  \"scope\": \"{{scope-02}}\",\r\n                  \"tag\": \"{{tag-02}}\"\r\n                }\r\n              ],\r\n              \"description\": \"{{Segment1-description}}\",\r\n              \"display_name\": \"{{Segment1-id}}\",\r\n              \"transport_zone_path\": \"/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}\",\r\n              \"subnets\": [\r\n                {\r\n                  \"gateway_address\": \"{{Segment1-gw}}\"\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          {\r\n            \"resource_type\": \"ChildSegment\",\r\n            \"Segment\": {\r\n              \"resource_type\": \"Segment\",\r\n              \"id\": \"{{Segment2-id}}\",\r\n              \"tags\": [\r\n                {\r\n                  \"scope\": \"{{scope-01}}\",\r\n                  \"tag\": \"{{tag-01}}\"\r\n                },\r\n                {\r\n                  \"scope\": \"{{scope-02}}\",\r\n                  \"tag\": \"{{tag-02}}\"\r\n                }\r\n              ],\r\n              \"description\": \"{{Segment2-description}}\",\r\n              \"display_name\": \"{{Segment2-id}}\",\r\n              \"transport_zone_path\": \"/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}\",\r\n              \"subnets\": [\r\n                {\r\n                  \"gateway_address\": \"{{Segment2-gw}}\"\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          {\r\n            \"resource_type\": \"ChildSegment\",\r\n            \"Segment\": {\r\n              \"resource_type\": \"Segment\",\r\n              \"id\": \"{{Segment3-id}}\",\r\n              \"tags\": [\r\n                {\r\n                  \"scope\": \"{{scope-01}}\",\r\n                  \"tag\": \"{{tag-01}}\"\r\n                },\r\n                {\r\n                  \"scope\": \"{{scope-02}}\",\r\n                  \"tag\": \"{{tag-02}}\"\r\n                }\r\n              ],\r\n              \"description\": \"{{Segment3-description}}\",\r\n              \"display_name\": \"{{Segment3-id}}\",\r\n              \"transport_zone_path\": \"/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}\",\r\n              \"subnets\": [\r\n                {\r\n                  \"gateway_address\": \"{{Segment3-gw}}\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n       ]\r\n      }\r\n    },\r\n    {\r\n      \"resource_type\": \"ChildDomain\",\r\n      \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n      \"Domain\": {\r\n        \"id\": \"{{domain_id}}\",\r\n        \"tags\": [\r\n          {\r\n            \"scope\": \"{{scope-01}}\",\r\n            \"tag\": \"{{tag-01}}\"\r\n          },\r\n          {\r\n            \"scope\": \"{{scope-02}}\",\r\n            \"tag\": \"{{tag-02}}\"\r\n          }\r\n        ],\r\n        \"resource_type\": \"Domain\",\r\n        \"description\": \"{{domain_id}}\",\r\n        \"display_name\": \"{{domain_id}}\",\r\n        \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n        \"children\": [\r\n          {\r\n            \"resource_type\": \"ChildGroup\",\r\n            \"Group\": {\r\n              \"resource_type\": \"Group\",\r\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n              \"description\": \"{{secgroup1-id}}\",\r\n              \"display_name\": \"{{secgroup1-id}}\",\r\n              \"id\": \"{{secgroup1-id}}\",\r\n              \"tags\": [\r\n                {\r\n                  \"scope\": \"{{scope-01}}\",\r\n                  \"tag\": \"{{tag-01}}\"\r\n                },\r\n                {\r\n                  \"scope\": \"{{scope-02}}\",\r\n                  \"tag\": \"{{tag-02}}\"\r\n                }\r\n              ],\r\n              \"expression\": [\r\n                {\r\n                  \"member_type\": \"VirtualMachine\",\r\n                  \"value\": \"{{scope}}|{{sectag1}}\",\r\n                  \"key\": \"Tag\",\r\n                  \"operator\": \"EQUALS\",\r\n                  \"resource_type\": \"Condition\"\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          {\r\n            \"resource_type\": \"ChildGroup\",\r\n            \"Group\": {\r\n              \"resource_type\": \"Group\",\r\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n              \"description\": \"{{secgroup2-id}}\",\r\n              \"display_name\": \"{{secgroup2-id}}\",\r\n              \"id\": \"{{secgroup2-id}}\",\r\n              \"tags\": [\r\n                {\r\n                  \"scope\": \"{{scope-01}}\",\r\n                  \"tag\": \"{{tag-01}}\"\r\n                },\r\n                {\r\n                  \"scope\": \"{{scope-02}}\",\r\n                  \"tag\": \"{{tag-02}}\"\r\n                }\r\n              ],\r\n              \"expression\": [\r\n                {\r\n                  \"member_type\": \"VirtualMachine\",\r\n                  \"value\": \"{{scope}}|{{sectag2}}\",\r\n                  \"key\": \"Tag\",\r\n                  \"operator\": \"EQUALS\",\r\n                  \"resource_type\": \"Condition\"\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          {\r\n            \"resource_type\": \"ChildGroup\",\r\n            \"Group\": {\r\n              \"resource_type\": \"Group\",\r\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n              \"description\": \"{{secgroup3-id}}\",\r\n              \"display_name\": \"{{secgroup3-id}}\",\r\n              \"id\": \"{{secgroup3-id}}\",\r\n              \"tags\": [\r\n                {\r\n                  \"scope\": \"{{scope-01}}\",\r\n                  \"tag\": \"{{tag-01}}\"\r\n                },\r\n                {\r\n                  \"scope\": \"{{scope-02}}\",\r\n                  \"tag\": \"{{tag-02}}\"\r\n                }\r\n              ],\r\n              \"expression\": [\r\n                {\r\n                  \"member_type\": \"VirtualMachine\",\r\n                  \"value\": \"{{scope}}|{{sectag3}}\",\r\n                  \"key\": \"Tag\",\r\n                  \"operator\": \"EQUALS\",\r\n                  \"resource_type\": \"Condition\"\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          {\r\n            \"resource_type\": \"ChildGroup\",\r\n            \"Group\": {\r\n              \"resource_type\": \"Group\",\r\n              \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n              \"description\": \"{{secgroupblanket-id}}\",\r\n              \"display_name\": \"{{secgroupblanket-id}}\",\r\n              \"id\": \"{{secgroupblanket-id}}\",\r\n              \"tags\": [\r\n                {\r\n                  \"scope\": \"{{scope-01}}\",\r\n                  \"tag\": \"{{tag-01}}\"\r\n                },\r\n                {\r\n                  \"scope\": \"{{scope-02}}\",\r\n                  \"tag\": \"{{tag-02}}\"\r\n                }\r\n              ],\r\n              \"expression\": [\r\n                {\r\n                  \"member_type\": \"VirtualMachine\",\r\n                  \"value\": \"{{scope}}|{{sectagblanket}}\",\r\n                  \"key\": \"Tag\",\r\n                  \"operator\": \"EQUALS\",\r\n                  \"resource_type\": \"Condition\"\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          {\r\n            \"resource_type\": \"ChildSecurityPolicy\",\r\n            \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n            \"SecurityPolicy\": {\r\n              \"id\": \"{{EW-securitypolicy-section-id}}\",\r\n              \"tags\": [\r\n                {\r\n                  \"scope\": \"{{scope-01}}\",\r\n                  \"tag\": \"{{tag-01}}\"\r\n                },\r\n                {\r\n                  \"scope\": \"{{scope-02}}\",\r\n                  \"tag\": \"{{tag-02}}\"\r\n                }\r\n              ],\r\n              \"resource_type\": \"SecurityPolicy\",\r\n              \"description\": \"communication map\",\r\n              \"display_name\": \"{{EW-securitypolicy-section-id}}\",\r\n              \"rules\": [\r\n                {\r\n                  \"resource_type\": \"Rule\",\r\n                  \"description\": \"Communication Entry\",\r\n                  \"display_name\": \"{{Rule1-id}}\",\r\n                  \"sequence_number\": 1,\r\n                  \"logged\": true,\r\n                  \"source_groups\": [\r\n                    \"ANY\"\r\n                  ],\r\n                  \"destination_groups\": [\r\n                    \"/infra/domains/{{domain_id}}/groups/{{secgroup1-id}}\"\r\n                  ],\r\n                  \"services\": [\r\n                    \"/infra/services/HTTP\",\r\n                    \"/infra/services/HTTPS\"\r\n                  ],\r\n                  \"scope\": [\r\n                    \"/infra/domains/{{domain_id}}/groups/{{secgroupblanket-id}}\"\r\n                  ],\r\n                  \"action\": \"ALLOW\"\r\n                },\r\n                {\r\n                  \"resource_type\": \"Rule\",\r\n                  \"description\": \"Communication Entry 2\",\r\n                  \"display_name\": \"{{Rule2-id}}\",\r\n                  \"sequence_number\": 2,\r\n                  \"logged\": true,\r\n                  \"source_groups\": [\r\n                    \"/infra/domains/{{domain_id}}/groups/{{secgroup1-id}}\"\r\n                  ],\r\n                  \"destination_groups\": [\r\n                    \"/infra/domains/{{domain_id}}/groups/{{secgroup2-id}}\"\r\n                  ],\r\n                  \"services\": [\r\n                    \"/infra/services/TCP_8443\"\r\n                  ],\r\n                  \"scope\": [\r\n                    \"/infra/domains/{{domain_id}}/groups/{{secgroupblanket-id}}\"\r\n                  ],\r\n                  \"action\": \"ALLOW\"\r\n                },\r\n                {\r\n                  \"resource_type\": \"Rule\",\r\n                  \"description\": \"Communication Entry 3\",\r\n                  \"display_name\": \"{{Rule3-id}}\",\r\n                  \"sequence_number\": 3,\r\n                  \"logged\": true,\r\n                  \"source_groups\": [\r\n                    \"/infra/domains/{{domain_id}}/groups/{{secgroup2-id}}\"\r\n                  ],\r\n                  \"destination_groups\": [\r\n                    \"/infra/domains/{{domain_id}}/groups/{{secgroup3-id}}\"\r\n                  ],\r\n                  \"services\": [\r\n                    \"/infra/services/MySQL\"\r\n                  ],\r\n                  \"scope\": [\r\n                    \"/infra/domains/{{domain_id}}/groups/{{secgroupblanket-id}}\"\r\n                  ],\r\n                  \"action\": \"ALLOW\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n          ]\r\n        }\r\n    },\r\n    {\r\n      \"resource_type\": \"ChildLBAppProfile\",\r\n      \"LBAppProfile\": {\r\n        \"resource_type\": \"LBHttpProfile\",\r\n        \"id\": \"batchSetupHttpAppProfile\",\r\n        \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n        \"tags\": [\r\n          {\r\n            \"scope\": \"{{scope-01}}\",\r\n            \"tag\": \"{{tag-01}}\"\r\n          },\r\n          {\r\n            \"scope\": \"{{scope-02}}\",\r\n            \"tag\": \"{{tag-02}}\"\r\n          }\r\n        ],\r\n        \"x_forwarded_for\": \"INSERT\"\r\n      }\r\n    },\r\n    {\r\n      \"resource_type\": \"ChildLBService\",\r\n      \"LBService\": {\r\n        \"resource_type\": \"LBService\",\r\n        \"id\": \"{{lb-id}}\",\r\n        \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n        \"tags\": [\r\n          {\r\n            \"scope\": \"{{scope-01}}\",\r\n            \"tag\": \"{{tag-01}}\"\r\n          },\r\n          {\r\n            \"scope\": \"{{scope-02}}\",\r\n            \"tag\": \"{{tag-02}}\"\r\n          }\r\n        ],\r\n        \"connectivity_path\": \"/infra/tier-1s/{{Tier1-name}}\",\r\n        \"error_log_level\": \"DEBUG\",\r\n        \"access_log_enabled\": true\r\n      }\r\n    },\r\n    {\r\n      \"resource_type\": \"ChildLBVirtualServer\",\r\n      \"LBVirtualServer\": {\r\n        \"resource_type\": \"LBVirtualServer\",\r\n        \"id\": \"{{vs-id}}\",\r\n        \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n        \"tags\": [\r\n          {\r\n            \"scope\": \"{{scope-01}}\",\r\n            \"tag\": \"{{tag-01}}\"\r\n          },\r\n          {\r\n            \"scope\": \"{{scope-02}}\",\r\n            \"tag\": \"{{tag-02}}\"\r\n          }\r\n        ],\r\n        \"lb_service_path\": \"/infra/lb-services/{{lb-id}}\",\r\n        \"ip_address\": \"{{vs-ip}}\",\r\n        \"ports\": [\r\n          \"443\"\r\n        ],\r\n        \"pool_path\": \"/infra/lb-pools/{{pool-id}}\",\r\n        \"application_profile_path\": \"/infra/lb-app-profiles/default-tcp-lb-app-profile\"\r\n        }\r\n      },\r\n    {\r\n      \"resource_type\": \"ChildLBPool\",\r\n      \"LBPool\":\r\n      {\r\n        \"id\": \"{{pool-id}}\",\r\n        \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n        \"tags\": [\r\n          {\r\n            \"scope\": \"{{scope-01}}\",\r\n            \"tag\": \"{{tag-01}}\"\r\n          },\r\n          {\r\n            \"scope\": \"{{scope-02}}\",\r\n            \"tag\": \"{{tag-02}}\"\r\n          }\r\n        ],\r\n        \"resource_type\": \"LBPool\",\r\n        \"active_monitor_paths\": [\r\n          \"/infra/lb-monitor-profiles/default-https-lb-monitor\"\r\n        ],\r\n            \"algorithm\": \"ROUND_ROBIN\",\r\n            \"member_group\": {\r\n                \"group_path\": \"/infra/domains/{{domain_id}}/groups/{{secgroup1-id}}\",\r\n                \"ip_revision_filter\": \"IPV4\"\r\n            },\r\n            \"snat_translation\": {\r\n                \"type\": \"LBSnatAutoMap\"\r\n            }\r\n      }\r\n    }\r\n  ]\r\n}\r\n"
 				},
-				"url": {
-					"raw": "https://{{nsxmanager}}/policy/api/v1/infra/",
-					"protocol": "https",
-					"host": [
-						"{{nsxmanager}}"
-					],
-					"path": [
-						"policy",
-						"api",
-						"v1",
-						"infra",
-						""
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
@@ -75,34 +47,18 @@
 			"request": {
 				"auth": {
 					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "VMware1!VMware1!",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
+					"basic": {
+						"showPassword": false
+					}
 				},
+				"url": "https://{{nsxmanager}}/api/v1/pools/ip-blocks",
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "https://{{nsxmanager}}/api/v1/pools/ip-blocks",
-					"protocol": "https",
-					"host": [
-						"{{nsxmanager}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"pools",
-						"ip-blocks"
-					]
-				}
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
 			},
 			"response": []
 		},
@@ -111,35 +67,8 @@
 			"request": {
 				"auth": {
 					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "VMware1!VMware1!",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"virtual_machine_id\": \"502ed6de-856f-8c99-1e93-ad8ab0857541\",\n    \"tags\": [\n        {\"scope\": \"{{scope}}\", \"tag\": \"{{sectagblanket}}\"},\n        {\"scope\": \"{{scope}}\", \"tag\": \"{{sectag3}}\"}\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
+					"basic": {
+						"showPassword": false
 					}
 				},
 				"url": {
@@ -163,7 +92,21 @@
 							"key": "action",
 							"value": "update_tags"
 						}
-					]
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"virtual_machine_id\": \"502ed6de-856f-8c99-1e93-ad8ab0857541\",\n    \"tags\": [\n        {\"scope\": \"{{scope}}\", \"tag\": \"{{sectagblanket}}\"},\n        {\"scope\": \"{{scope}}\", \"tag\": \"{{sectag3}}\"}\n    ]\n}"
 				},
 				"description": "Attached security tag to VM"
 			},
@@ -174,19 +117,11 @@
 			"request": {
 				"auth": {
 					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "VMware1!VMware1!",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
+					"basic": {
+						"showPassword": false
+					}
 				},
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/",
 				"method": "PATCH",
 				"header": [
 					{
@@ -205,20 +140,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"resource_type\": \"Infra\",\n  \"children\": [\n    {\n      \"resource_type\": \"ChildTier0\",\n      \"marked_for_delete\": \"{{marked_for_delete}}\",\n      \"Tier0\": {\n        \"resource_type\": \"Tier0\",\n        \"id\": \"{{Tier0-name}}\",\n        \"description\": \"{{Tier0-description}}\",\n        \"display_name\": \"{{Tier0-name}}\",\n        \"ha_mode\": \"{{Tier0-ha_mode}}\",\n        \"failover_mode\": \"{{Tier0-failover_mode}}\",\n        \"children\": [\n          {\n           \"resource_type\":\"ChildLocaleServices\",\n           \"LocaleServices\":{\n               \"resource_type\":\"LocaleServices\",\n               \"id\":  \"{{locale-services-id}}\",\n               \"edge_cluster_path\": \"/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}\",\n               \"route_redistribution_types\": [\n                  \"TIER1_LB_SNAT\",\n                  \"TIER0_NAT\",\n                  \"TIER0_CONNECTED\",\n                  \"TIER1_NAT\",\n                  \"TIER1_CONNECTED\",\n                  \"TIER1_LB_VIP\"\n                  ],\n               \"children\":[\n                 {\n                   \"resource_type\":\"ChildTier0Interface\",\n                   \"Tier0Interface\":{\n                     \"mtu\": \"{{T0-Uplink01-MTU}}\",\n                     \"edge_path\": \"/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}/edge-nodes/{{edge-node-01-id}}\",\n                     \"segment_path\": \"/infra/segments/{{Segment-id}}\",\n                     \"type\": \"EXTERNAL\",\n                     \"resource_type\": \"Tier0Interface\",\n                     \"id\": \"{{Uplink01-id}}\",\n                     \"display_name\": \"{{Uplink01-id}}\",\n                     \"path\": \"/infra/tier-0s/{{Tier0-name}}/locale-services/{{locale-services-id}}/interfaces/{{Uplink01-id}}\",\n                     \"relative_path\": \"{{Uplink01-id}}\",\n                     \"parent_path\": \"/infra/tier-0s/{{Tier0-name}}/locale-services/{{locale-services-id}}\",\n                     \"marked_for_delete\": \"{{marked_for_delete}}\",\n                     \"subnets\": [\n                       {\n                         \"ip_addresses\": [\n                           \"{{Uplink-01-ip}}\"\n                         ],\n                         \"prefix_len\": \"{{Uplink-01-prefix-len}}\"\n                       }\n                     ]\n                   }\n                 },\n                 {\n                   \"resource_type\":\"ChildTier0Interface\",\n                   \"Tier0Interface\":{\n                     \"mtu\": \"{{T0-Uplink02-MTU}}\",\n                     \"edge_path\": \"/infra/sites/default/enforcement-points/default/edge-clusters/{{edge-cluster-id}}/edge-nodes/{{edge-node-02-id}}\",\n                     \"segment_path\": \"/infra/segments/{{Segment-id}}\",\n                     \"type\": \"EXTERNAL\",\n                     \"resource_type\": \"Tier0Interface\",\n                     \"id\": \"{{Uplink02-id}}\",\n                     \"display_name\": \"{{Uplink02-id}}\",\n                     \"path\": \"/infra/tier-0s/{{Tier0-name}}/locale-services/{{locale-services-id}}/interfaces/{{Uplink02-id}}\",\n                     \"relative_path\": \"{{Uplink02-id}}\",\n                     \"parent_path\": \"/infra/tier-0s/{{Tier0-name}}/locale-services/{{locale-services-id}}\",\n                     \"marked_for_delete\": \"{{marked_for_delete}}\",\n                     \"subnets\": [\n                       {\n                         \"ip_addresses\": [\n                           \"{{Uplink-02-ip}}\"\n                         ],\n                         \"prefix_len\": \"{{Uplink-02-prefix-len}}\"\n                       }\n                     ]\n                   }\n                 },\n                 {\n                   \"resource_type\":\"ChildBgpRoutingConfig\",\n                   \"BgpRoutingConfig\":{\n                   \t  \"id\": \"bgp\",\n                   \t  \"resource_type\":\"BgpRoutingConfig\",\n                      \"local_as_num\": \"{{bgp-asn}}\",\n                      \"enabled\": \"{{is-enabled}}\",\n                      \"ecmp\": \"{{is-ecmp}}\",\n                      \"multipath_relax\": \"{{is-multipath}}\",\n                      \"graceful_restart_config\": {\n                        \"mode\": \"HELPER_ONLY\",\n                        \"timer\": {\n                          \"restart_timer\": 180,\n                          \"stale_route_timer\": 600\n                        }\n                      },\n                      \"children\":[\n                        {\n                          \"resource_type\":\"ChildBgpNeighborConfig\",\n                          \"BgpNeighborConfig\":{\n                          \t\"resource_type\":\"BgpNeighborConfig\",\n                            \"id\":\"peer1\",\n                            \"source_addresses\": [\n                              \"{{Uplink-01-ip}}\",\n                              \"{{Uplink-02-ip}}\"\n                            ],\n                            \"neighbor_address\": \"{{neighbor-address}}\",\n                            \"remote_as_num\": \"{{remote-asn}}\",\n                            \"route_filtering\": [\n                              {\n                                \"enabled\": true,\n                                \"address_family\": \"IPV4\"\n                              }\n                            ],\n                            \"keep_alive_time\": 60,\n                            \"hold_down_time\": 180,\n                            \"bfd\": {\n                              \"enabled\": \"{{bfd-enabled}}\",\n                              \"interval\": 1000,\n                              \"multiple\": 3\n                            },\n                            \"allow_as_in\": false,\n                            \"maximum_hop_limit\": 1\n                          }\n                        }\n                      ]\n                   }\n                 }\n               ]\n               }\n          }\n       ]\n      }\n    },\n    {\n      \"resource_type\": \"ChildSegment\",\n      \"Segment\": {\n        \"resource_type\": \"Segment\",\n        \"marked_for_delete\": \"{{marked_for_delete}}\",\n        \"id\": \"{{Segment-id}}\",\n        \"description\": \"{{Segment-description}}\",\n        \"display_name\": \"{{Segment-id}}\",\n        \"transport_zone_path\": \"/infra/sites/default/enforcement-points/default/transport-zones/{{Segment-TZid}}\",\n        \"type\": \"DISCONNECTED\",\n        \"vlan_ids\": [\n          \"0\"\n        ]\n        }\n    }\n  ]\n}\n"
 				},
-				"url": {
-					"raw": "https://{{nsxmanager}}/policy/api/v1/infra/",
-					"protocol": "https",
-					"host": [
-						"{{nsxmanager}}"
-					],
-					"path": [
-						"policy",
-						"api",
-						"v1",
-						"infra",
-						""
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
@@ -227,19 +149,11 @@
 			"request": {
 				"auth": {
 					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "VMware1!VMware1!",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
+					"basic": {
+						"showPassword": false
+					}
 				},
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/",
 				"method": "PATCH",
 				"header": [
 					{
@@ -263,27 +177,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"resource_type\": \"Infra\",\n    \"children\": [\n        {\n            \"resource_type\": \"ChildLBClientSslProfile\",\n            \"LBClientSslProfile\": {\n                \"resource_type\": \"LBClientSslProfile\",\n                \"id\": \"batchSetupClientSslProfile\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"cipher_group_label\": \"CUSTOM\",\n                \"session_cache_enabled\": true,\n                \"ciphers\": [\n                    \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\n                    \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\"\n                ],\n                \"protocols\": [\n                    \"TLS_V1_2\"\n                ]\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBServerSslProfile\",\n            \"LBServerSslProfile\": {\n                \"resource_type\": \"LBServerSslProfile\",\n                \"id\": \"batchSetupServerSslProfile\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"cipher_group_label\": \"CUSTOM\",\n                \"session_cache_enabled\": true,\n                \"ciphers\": [\n                    \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\n                    \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\"\n                ],\n                \"protocols\": [\n                    \"TLS_V1_2\"\n                ]\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBAppProfile\",\n            \"LBAppProfile\": {\n                \"resource_type\": \"LBHttpProfile\",\n                \"id\": \"batchSetupHttpAppProfile\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"x_forwarded_for\": \"INSERT\"\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBMonitorProfile\",\n            \"LBMonitorProfile\": {\n                \"resource_type\": \"LBHttpMonitorProfile\",\n                \"id\": \"batchSetupHttpMonitor1\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"monitor_port\": 80,\n                \"timeout\": 5,\n                \"response_status_codes\": [\n                    200,\n                    300\n                ]\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBMonitorProfile\",\n            \"LBMonitorProfile\": {\n                \"resource_type\": \"LBHttpsMonitorProfile\",\n                \"id\": \"batchSetupHttpsMonitor1\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"monitor_port\": 443,\n                \"timeout\": 5,\n                \"response_status_codes\": [\n                    200\n                ]\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBService\",\n            \"LBService\": {\n                \"resource_type\": \"LBService\",\n                \"id\": \"{{lb-id}}\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"connectivity_path\": \"/infra/tier-1s/{{Tier1-name}}\",\n                \"error_log_level\": \"DEBUG\",\n                \"access_log_enabled\": true\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBVirtualServer\",\n            \"LBVirtualServer\": {\n                \"resource_type\": \"LBVirtualServer\",\n                \"id\": \"{{vs-id}}\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"lb_service_path\": \"/infra/lb-services/{{lb-id}}\",\n                \"ip_address\": \"{{vs-ip}}\",\n                \"ports\": [\n                    \"80\"\n                ],\n                \"pool_path\": \"/infra/lb-pools/{{pool-id}}\",\n                \"application_profile_path\": \"/infra/lb-app-profiles/batchSetupHttpAppProfile\"\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBPool\",\n            \"LBPool\": {\n                \"id\": \"{{pool-id}}\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"resource_type\": \"LBPool\",\n                \"active_monitor_paths\": [\n                    \"/infra/lb-monitor-profiles/default-icmp-lb-monitor\"\n                ],\n                \"algorithm\": \"ROUND_ROBIN\",\n                \"member_group\": {\n                    \"group_path\": \"/infra/domains/default/groups/{{secgroup1-id}}\",\n                    \"ip_revision_filter\": \"IPV4\"\n                },\n                \"snat_translation\": {\n                    \"type\": \"LBSnatDisabled\"\n                }\n            }\n        }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n    \"resource_type\": \"Infra\",\n    \"children\": [\n        {\n            \"resource_type\": \"ChildLBClientSslProfile\",\n            \"LBClientSslProfile\": {\n                \"resource_type\": \"LBClientSslProfile\",\n                \"id\": \"batchSetupClientSslProfile\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"cipher_group_label\": \"CUSTOM\",\n                \"session_cache_enabled\": true,\n                \"ciphers\": [\n                    \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\n                    \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\"\n                ],\n                \"protocols\": [\n                    \"TLS_V1_2\"\n                ]\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBServerSslProfile\",\n            \"LBServerSslProfile\": {\n                \"resource_type\": \"LBServerSslProfile\",\n                \"id\": \"batchSetupServerSslProfile\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"cipher_group_label\": \"CUSTOM\",\n                \"session_cache_enabled\": true,\n                \"ciphers\": [\n                    \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\n                    \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\"\n                ],\n                \"protocols\": [\n                    \"TLS_V1_2\"\n                ]\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBAppProfile\",\n            \"LBAppProfile\": {\n                \"resource_type\": \"LBHttpProfile\",\n                \"id\": \"batchSetupHttpAppProfile\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"x_forwarded_for\": \"INSERT\"\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBMonitorProfile\",\n            \"LBMonitorProfile\": {\n                \"resource_type\": \"LBHttpMonitorProfile\",\n                \"id\": \"batchSetupHttpMonitor1\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"monitor_port\": 80,\n                \"timeout\": 5,\n                \"response_status_codes\": [\n                    200,\n                    300\n                ]\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBMonitorProfile\",\n            \"LBMonitorProfile\": {\n                \"resource_type\": \"LBHttpsMonitorProfile\",\n                \"id\": \"batchSetupHttpsMonitor1\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"monitor_port\": 443,\n                \"timeout\": 5,\n                \"response_status_codes\": [\n                    200\n                ]\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBService\",\n            \"LBService\": {\n                \"resource_type\": \"LBService\",\n                \"id\": \"{{lb-id}}\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"connectivity_path\": \"/infra/tier-1s/{{Tier1-name}}\",\n                \"error_log_level\": \"DEBUG\",\n                \"access_log_enabled\": true\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBVirtualServer\",\n            \"LBVirtualServer\": {\n                \"resource_type\": \"LBVirtualServer\",\n                \"id\": \"{{vs-id}}\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"lb_service_path\": \"/infra/lb-services/{{lb-id}}\",\n                \"ip_address\": \"{{vs-ip}}\",\n                \"ports\": [\n                    \"80\"\n                ],\n                \"pool_path\": \"/infra/lb-pools/{{pool-id}}\",\n                \"application_profile_path\": \"/infra/lb-app-profiles/batchSetupHttpAppProfile\"\n            }\n        },\n        {\n            \"resource_type\": \"ChildLBPool\",\n            \"LBPool\": {\n                \"id\": \"{{pool-id}}\",\n                \"marked_for_delete\": \"{{marked_for_delete}}\",\n                \"tags\": [\n                    {\n                        \"scope\": \"{{scope-01}}\",\n                        \"tag\": \"{{tag-01}}\"\n                    },\n                    {\n                        \"scope\": \"{{scope-02}}\",\n                        \"tag\": \"{{tag-02}}\"\n                    }\n                ],\n                \"resource_type\": \"LBPool\",\n                \"active_monitor_paths\": [\n                    \"/infra/lb-monitor-profiles/default-icmp-lb-monitor\"\n                ],\n                \"algorithm\": \"ROUND_ROBIN\",\n                \"member_group\": {\n                    \"group_path\": \"/infra/domains/default/groups/{{secgroup1-id}}\",\n                    \"ip_revision_filter\": \"IPV4\"\n                },\n                \"snat_translation\": {\n                    \"type\": \"LBSnatDisabled\"\n                }\n            }\n        }\n    ]\n}"
 				},
-				"url": {
-					"raw": "https://{{nsxmanager}}/policy/api/v1/infra/",
-					"protocol": "https",
-					"host": [
-						"{{nsxmanager}}"
-					],
-					"path": [
-						"policy",
-						"api",
-						"v1",
-						"infra",
-						""
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
@@ -292,19 +188,11 @@
 			"request": {
 				"auth": {
 					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "VMware1!VMware1!",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
+					"basic": {
+						"showPassword": false
+					}
 				},
+				"url": "https://{{nsxmanager}}/api/v1/transport-zones/{{tz_id}}",
 				"method": "DELETE",
 				"header": [
 					{
@@ -316,26 +204,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": ""
 				},
-				"url": {
-					"raw": "https://{{nsxmanager}}/api/v1/transport-zones/{{tz_id}}",
-					"protocol": "https",
-					"host": [
-						"{{nsxmanager}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"transport-zones",
-						"{{tz_id}}"
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
@@ -344,19 +215,11 @@
 			"request": {
 				"auth": {
 					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "VMware1!VMware1!",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
+					"basic": {
+						"showPassword": false
+					}
 				},
+				"url": "https://{{nsxmanager}}/api/v1/transport-zones/",
 				"method": "POST",
 				"header": [
 					{
@@ -368,26 +231,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"display_name\":\"{{TZ_name}}\",\n  \"host_switch_name\":\"{{NVDS_name}}\",\n  \"description\":\"{{Description}}\",\n  \"transport_type\":\"{{Transport_Type}}\"\n}\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n  \"display_name\":\"{{TZ_name}}\",\n  \"host_switch_name\":\"{{NVDS_name}}\",\n  \"description\":\"{{Description}}\",\n  \"transport_type\":\"{{Transport_Type}}\"\n}\n"
 				},
-				"url": {
-					"raw": "https://{{nsxmanager}}/api/v1/transport-zones/",
-					"protocol": "https",
-					"host": [
-						"{{nsxmanager}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"transport-zones",
-						""
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		},
@@ -396,19 +242,11 @@
 			"request": {
 				"auth": {
 					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "VMware1!VMware1!",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
+					"basic": {
+						"showPassword": false
+					}
 				},
+				"url": "https://{{nsxmanager}}/api/v1/pools/ip-pools",
 				"method": "POST",
 				"header": [
 					{
@@ -420,29 +258,11 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"display_name\": \"{{Pool_Name}}\",\n  \"description\": \"{{Pool_Description}}\",\n  \"subnets\": [\n    {\n        \"allocation_ranges\": [\n            {\n                \"start\": \"{{IPv4_Start}}\",\n                \"end\": \"{{IPv4_End}}\"\n            }\n        ],\n       \"gateway_ip\": \"{{IPv4_Gateway}}\",\n       \"cidr\": \"{{IPv4_CIDR}}\"\n    }\n  ]\n}\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n  \"display_name\": \"{{Pool_Name}}\",\n  \"description\": \"{{Pool_Description}}\",\n  \"subnets\": [\n    {\n        \"allocation_ranges\": [\n            {\n                \"start\": \"{{IPv4_Start}}\",\n                \"end\": \"{{IPv4_End}}\"\n            }\n        ],\n       \"gateway_ip\": \"{{IPv4_Gateway}}\",\n       \"cidr\": \"{{IPv4_CIDR}}\"\n    }\n  ]\n}\n"
 				},
-				"url": {
-					"raw": "https://{{nsxmanager}}/api/v1/pools/ip-pools",
-					"protocol": "https",
-					"host": [
-						"{{nsxmanager}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"pools",
-						"ip-pools"
-					]
-				}
+				"description": ""
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

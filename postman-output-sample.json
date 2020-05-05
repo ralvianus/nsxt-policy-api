@@ -1,17 +1,3 @@
-PATCH /policy/api/v1/infra/ HTTP/1.1
-Host: nsxapp-02a.corp.local:44321
-Authorization: Basic YWRtaW46QWRtaW4hMjNBZG1pbg==,Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==
-Content-Type: application/json
-Postman-Token: 873c52d3-9759-44a2-bda7-becda0a96575,adeb8f3a-0406-4724-89aa-6763e19be4fa
-cache-control: no-cache,no-cache
-User-Agent: PostmanRuntime/7.19.0
-Accept: */*
-Host: nsxapp-02a.corp.local:44321
-Accept-Encoding: gzip, deflate
-Content-Length: 13556
-Cookie: JSESSIONID=5DB990EC6EE05FEF4CD53079D25B4C9C
-Connection: keep-alive
-
 {
   "resource_type": "Infra",
   "children": [
@@ -23,8 +9,8 @@ Connection: keep-alive
         "id": "prod-tier-1-gw",
         "tags": [
           {
-            "scope": "app",
-            "tag": "3-tier"
+            "scope": "projectname",
+            "tag": "project01"
           },
           {
             "scope": "env",
@@ -34,7 +20,7 @@ Connection: keep-alive
         "description": "Created by Policy API",
         "display_name": "prod-tier-1-gw",
         "failover_mode": "NON_PREEMPTIVE",
-        "tier0_path":"/infra/tier-0s/Tier-0-GW",
+        "tier0_path":"/infra/tier-0s/Tier-0-gateway-01",
         "route_advertisement_types": [
           "TIER1_LB_SNAT",
           "TIER1_NAT",
@@ -50,15 +36,15 @@ Connection: keep-alive
                "marked_for_delete": "false",
                "tags": [
                  {
-                   "scope": "app",
-                   "tag": "3-tier"
+                   "scope": "projectname",
+                   "tag": "project01"
                  },
                  {
                    "scope": "env",
                    "tag": "prod"
                  }
                ],
-                "edge_cluster_path": "/infra/sites/default/enforcement-points/default/edge-clusters/ec6f2915-c5a5-45b0-8f9c-ec6dadb692a6"
+                "edge_cluster_path": "/infra/sites/default/enforcement-points/default/edge-clusters/ca581d9f-2f0d-47ca-84bb-6e9e2718f22c"
                 }
         },
           {
@@ -68,8 +54,8 @@ Connection: keep-alive
               "id": "PROD-WEB-Segment",
               "tags": [
                 {
-                  "scope": "app",
-                  "tag": "3-tier"
+                  "scope": "projectname",
+                  "tag": "project01"
                 },
                 {
                   "scope": "env",
@@ -78,7 +64,7 @@ Connection: keep-alive
               ],
               "description": "Created by Policy API",
               "display_name": "PROD-WEB-Segment",
-              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/cff37dc1-3a76-423a-a326-d990f5cc814d",
+              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/6f8d00aa-cc64-493e-997f-23aa7fdf26d4",
               "subnets": [
                 {
                   "gateway_address": "172.16.10.1/24"
@@ -93,8 +79,8 @@ Connection: keep-alive
               "id": "PROD-APP-Segment",
               "tags": [
                 {
-                  "scope": "app",
-                  "tag": "3-tier"
+                  "scope": "projectname",
+                  "tag": "project01"
                 },
                 {
                   "scope": "env",
@@ -103,7 +89,7 @@ Connection: keep-alive
               ],
               "description": "Created by Policy API",
               "display_name": "PROD-APP-Segment",
-              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/cff37dc1-3a76-423a-a326-d990f5cc814d",
+              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/6f8d00aa-cc64-493e-997f-23aa7fdf26d4",
               "subnets": [
                 {
                   "gateway_address": "172.16.20.1/24"
@@ -118,8 +104,8 @@ Connection: keep-alive
               "id": "PROD-DB-Segment",
               "tags": [
                 {
-                  "scope": "app",
-                  "tag": "3-tier"
+                  "scope": "projectname",
+                  "tag": "project01"
                 },
                 {
                   "scope": "env",
@@ -128,7 +114,7 @@ Connection: keep-alive
               ],
               "description": "Created by Policy API",
               "display_name": "PROD-DB-Segment",
-              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/cff37dc1-3a76-423a-a326-d990f5cc814d",
+              "transport_zone_path": "/infra/sites/default/enforcement-points/default/transport-zones/6f8d00aa-cc64-493e-997f-23aa7fdf26d4",
               "subnets": [
                 {
                   "gateway_address": "172.16.30.1/24"
@@ -146,8 +132,8 @@ Connection: keep-alive
         "id": "default",
         "tags": [
           {
-            "scope": "app",
-            "tag": "3-tier"
+            "scope": "projectname",
+            "tag": "project01"
           },
           {
             "scope": "env",
@@ -169,8 +155,8 @@ Connection: keep-alive
               "id": "prod-web-vms",
               "tags": [
                 {
-                  "scope": "app",
-                  "tag": "3-tier"
+                  "scope": "projectname",
+                  "tag": "project01"
                 },
                 {
                   "scope": "env",
@@ -198,8 +184,8 @@ Connection: keep-alive
               "id": "prod-app-vms",
               "tags": [
                 {
-                  "scope": "app",
-                  "tag": "3-tier"
+                  "scope": "projectname",
+                  "tag": "project01"
                 },
                 {
                   "scope": "env",
@@ -227,8 +213,8 @@ Connection: keep-alive
               "id": "prod-db-vms",
               "tags": [
                 {
-                  "scope": "app",
-                  "tag": "3-tier"
+                  "scope": "projectname",
+                  "tag": "project01"
                 },
                 {
                   "scope": "env",
@@ -256,8 +242,8 @@ Connection: keep-alive
               "id": "prod-3tier-app",
               "tags": [
                 {
-                  "scope": "app",
-                  "tag": "3-tier"
+                  "scope": "projectname",
+                  "tag": "project01"
                 },
                 {
                   "scope": "env",
@@ -282,8 +268,8 @@ Connection: keep-alive
               "id": "prod-3tier-app-policy",
               "tags": [
                 {
-                  "scope": "app",
-                  "tag": "3-tier"
+                  "scope": "projectname",
+                  "tag": "project01"
                 },
                 {
                   "scope": "env",
@@ -297,7 +283,7 @@ Connection: keep-alive
                 {
                   "resource_type": "Rule",
                   "description": "Communication Entry",
-                  "display_name": "any-to-web",
+                  "display_name": "client-access",
                   "sequence_number": 1,
                   "logged": true,
                   "source_groups": [
@@ -328,7 +314,7 @@ Connection: keep-alive
                     "/infra/domains/default/groups/prod-app-vms"
                   ],
                   "services": [
-                    "/infra/services/HTTP"
+                    "/infra/services/TCP_8443"
                   ],
                   "scope": [
                     "/infra/domains/default/groups/prod-3tier-app"
@@ -357,89 +343,104 @@ Connection: keep-alive
                 }
               ]
             }
-          },
-          {
-            "resource_type": "ChildGatewayPolicy",
-            "marked_for_delete": "false",
-            "GatewayPolicy": {
-              "resource_type": "GatewayPolicy",
-              "id": "prod-3tier-app",
-              "tags": [
-                {
-                  "scope": "app",
-                  "tag": "3-tier"
-                },
-                {
-                  "scope": "env",
-                  "tag": "prod"
-                }
-              ],
-              "display_name": "prod-3tier-app",
-              "parent_path": "/infra/domains/default",
-              "marked_for_delete": "false",
-              "rules": [
-                {
-                 "source_groups": [
-                        "ANY"
-                    ],
-                    "destination_groups": [
-                        "/infra/domains/default/groups/prod-web-vms"
-                    ],
-                    "services": [
-                        "/infra/services/HTTP",
-                        "/infra/services/HTTPS"
-                    ],
-                    "profiles": [
-                        "ANY"
-                    ],
-                    "action": "ALLOW",
-                    "logged": true,
-                    "scope": [
-                        "/infra/tier-1s/prod-tier-1-gw"
-                    ],
-                    "disabled": false,
-                    "notes": "",
-                    "direction": "IN_OUT",
-                    "tag": "",
-                    "ip_protocol": "IPV4_IPV6",
-                    "resource_type": "Rule",
-                    "id": "Any-to-web",
-                    "display_name": "Any-to-web"
-                },
-                {
-                 "source_groups": [
-                        "ANY"
-                    ],
-                    "destination_groups": [
-                        "/infra/domains/default/groups/prod-web-vms",
-                        "/infra/domains/default/groups/prod-app-vms",
-                        "/infra/domains/default/groups/prod-db-vms"
-                    ],
-                    "services": [
-                        "ANY"
-                    ],
-                    "profiles": [
-                        "ANY"
-                    ],
-                    "action": "DROP",
-                    "logged": false,
-                    "scope": [
-                        "/infra/tier-1s/prod-tier-1-gw"
-                    ],
-                    "disabled": false,
-                    "notes": "",
-                    "direction": "IN_OUT",
-                    "tag": "",
-                    "ip_protocol": "IPV4_IPV6",
-                    "resource_type": "Rule",
-                    "id": "DenyAny",
-                    "display_name": "DenyAny"
-                }
-               ]
-            }
           }
           ]
         }
+    },
+    {
+      "resource_type": "ChildLBAppProfile",
+      "LBAppProfile": {
+        "resource_type": "LBHttpProfile",
+        "id": "batchSetupHttpAppProfile",
+        "marked_for_delete": "false",
+        "tags": [
+          {
+            "scope": "projectname",
+            "tag": "project01"
+          },
+          {
+            "scope": "env",
+            "tag": "prod"
+          }
+        ],
+        "x_forwarded_for": "INSERT"
+      }
+    },
+    {
+      "resource_type": "ChildLBService",
+      "LBService": {
+        "resource_type": "LBService",
+        "id": "prod-3tier-app-LbService",
+        "marked_for_delete": "false",
+        "tags": [
+          {
+            "scope": "projectname",
+            "tag": "project01"
+          },
+          {
+            "scope": "env",
+            "tag": "prod"
+          }
+        ],
+        "connectivity_path": "/infra/tier-1s/prod-tier-1-gw",
+        "error_log_level": "DEBUG",
+        "access_log_enabled": true
+      }
+    },
+    {
+      "resource_type": "ChildLBVirtualServer",
+      "LBVirtualServer": {
+        "resource_type": "LBVirtualServer",
+        "id": "prod-3tier-app-VirtualServer1",
+        "marked_for_delete": "false",
+        "tags": [
+          {
+            "scope": "projectname",
+            "tag": "project01"
+          },
+          {
+            "scope": "env",
+            "tag": "prod"
+          }
+        ],
+        "lb_service_path": "/infra/lb-services/prod-3tier-app-LbService",
+        "ip_address": "172.16.40.11",
+        "ports": [
+          "80"
+        ],
+        "pool_path": "/infra/lb-pools/prod-3tier-app-PROD-web-Pool",
+        "application_profile_path": "/infra/lb-app-profiles/batchSetupHttpAppProfile"
+        }
+      },
+    {
+      "resource_type": "ChildLBPool",
+      "LBPool":
+      {
+        "id": "prod-3tier-app-PROD-web-Pool",
+        "marked_for_delete": "false",
+        "tags": [
+          {
+            "scope": "projectname",
+            "tag": "project01"
+          },
+          {
+            "scope": "env",
+            "tag": "prod"
+          }
+        ],
+        "resource_type": "LBPool",
+        "active_monitor_paths": [
+          "/infra/lb-monitor-profiles/default-icmp-lb-monitor"
+        ],
+            "algorithm": "ROUND_ROBIN",
+            "member_group": {
+                "group_path": "/infra/domains/default/groups/prod-web-vms",
+                "ip_revision_filter": "IPV4"
+            },
+            "snat_translation": {
+                "type": "LBSnatDisabled"
+            }
+      }
     }
   ]
 }

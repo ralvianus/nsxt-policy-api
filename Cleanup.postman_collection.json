@@ -1,0 +1,238 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Cleanup",
+		"_postman_id": "cdcbc74e-29a1-6f1f-d9ea-7736a07fd74b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete Virtual Server",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/lb-virtual-servers/{{vs-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Deleting Virtual Server"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pool",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/lb-pools/{{pool-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Deleting Pool"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete LB Service",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/lb-services/{{lb-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete LB Services"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Security Policy",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/domains/{{domain_id}}/security-policies/{{EW-securitypolicy-section-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Group Web",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/domains/{{domain_id}}/groups/{{secgroup1-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Group App",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/domains/{{domain_id}}/groups/{{secgroup2-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Group DB",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/domains/{{domain_id}}/groups/{{secgroup3-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Group blanket",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/domains/{{domain_id}}/groups/{{secgroupblanket-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Segment Web",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/tier-1s/{{Tier1-name}}/segments/{{Segment1-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Segment App",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/tier-1s/{{Tier1-name}}/segments/{{Segment2-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n    \"children\": [\r\n    \t{\r\n            \"resource_type\": \"ChildSegment\",\r\n            \"Segment\": {\r\n              \"resource_type\": \"Segment\",\r\n              \"id\": \"{{Segment1-id}}\",\r\n              \"marked_for_delete\": \"{{marked_for_delete}}\"\r\n            }\r\n    \t}\r\n    ]\r\n}"
+				},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Segment DB",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/tier-1s/{{Tier1-name}}/segments/{{Segment3-id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"marked_for_delete\": \"{{marked_for_delete}}\",\r\n    \"children\": [\r\n    \t{\r\n            \"resource_type\": \"ChildSegment\",\r\n            \"Segment\": {\r\n              \"resource_type\": \"Segment\",\r\n              \"id\": \"{{Segment1-id}}\",\r\n              \"marked_for_delete\": \"{{marked_for_delete}}\"\r\n            }\r\n    \t}\r\n    ]\r\n}"
+				},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete T1 Locale-service",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/tier-1s/{{Tier1-name}}/locale-services/{{domain_id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete T1",
+			"request": {
+				"url": "https://{{nsxmanager}}/policy/api/v1/infra/tier-1s/{{Tier1-name}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46Vk13YXJlMSFWTXdhcmUxIQ==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete Security Policy"
+			},
+			"response": []
+		}
+	]
+}
